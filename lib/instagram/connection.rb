@@ -16,6 +16,7 @@ module Instagram
 
       Faraday::Connection.new(options) do |connection|
         connection.use Faraday::Request::OAuth2, client_id, access_token
+        connection.use Faraday::Request::UrlEncoded
         connection.adapter(adapter)
         connection.use Faraday::Response::RaiseHttp5xx
         unless raw
